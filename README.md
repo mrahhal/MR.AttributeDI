@@ -4,4 +4,4 @@
 [![NuGet version](https://badge.fury.io/nu/MR.AttributeDI.svg)](https://www.nuget.org/packages/MR.AttributeDI.Abstractions)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Provides attribute configuration of dependency injection services.
+Provides attribute based configuration of dependency injection services.
