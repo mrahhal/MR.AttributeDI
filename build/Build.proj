@@ -19,7 +19,9 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<Assemblies Include="MR.AttributeDI.Abstractions" />
+		<Assemblies Include="MR.AttributeDI.ServiceCollection" />
 		<TestAssemblies Include="MR.AttributeDI.Abstractions.Tests" />
+		<TestAssemblies Include="MR.AttributeDI.ServiceCollection.Tests" />
 	</ItemGroup>
 	<Import Project="Build.tasks" />
 

@@ -63,20 +63,28 @@ namespace MR.AttributeDI
 		[Fact]
 		public void Collect()
 		{
+			// Assert
 			var applier = new FakeApplier();
 			var collector = Create();
+
+			// Act
 			collector.Collect(applier);
 
+			// Assert
 			applier.Contexts.Should().Contain((c) => c.Service == typeof(Service1));
 		}
 
 		[Fact]
 		public void Collect_Multiple()
 		{
+			// Arrange
 			var applier = new FakeApplier();
 			var collector = Create();
+
+			// Act
 			collector.Collect(applier);
 
+			// Assert
 			applier.Contexts.Should().Contain((c) =>
 				c.Service == typeof(Service2) && c.As == typeof(Service2)).And.Contain((c) =>
 				c.Service == typeof(Service2) && c.As == typeof(IService2));
