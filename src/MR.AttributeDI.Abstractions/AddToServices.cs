@@ -15,7 +15,7 @@ namespace MR.AttributeDI
 			As = @as;
 		}
 
-		public Lifetime Lifetime { get; set; } = Lifetime.Shared;
+		public Lifetime Lifetime { get; set; } = Lifetime.Scoped;
 
 		public Type As { get; set; }
 	}
