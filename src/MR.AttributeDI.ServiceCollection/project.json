@@ -1,4 +1,4 @@
-﻿{
+{
   "version": "1.0.0-*",
   "description": "MR.AttributeDI's plugin for Microsoft's IServiceCollection",
   "authors": [ "Mohammad Rahhal" ],

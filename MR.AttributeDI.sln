@@ -26,6 +26,10 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MR.AttributeDI.ServiceColle
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MR.AttributeDI.ServiceCollection.Tests", "test\MR.AttributeDI.ServiceCollection.Tests\MR.AttributeDI.ServiceCollection.Tests.xproj", "{8D80C54D-2E37-407B-A755-0F36485C331C}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MR.AttributeDI.Autofac", "src\MR.AttributeDI.Autofac\MR.AttributeDI.Autofac.xproj", "{2994137E-F117-4B4F-B6D7-F0D2669260F0}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MR.AttributeDI.Autofac.Tests", "test\MR.AttributeDI.Autofac.Tests\MR.AttributeDI.Autofac.Tests.xproj", "{60B1B0B1-663B-482E-BA1C-4A5BCF5A2845}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +52,14 @@ Global
 		{8D80C54D-2E37-407B-A755-0F36485C331C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D80C54D-2E37-407B-A755-0F36485C331C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D80C54D-2E37-407B-A755-0F36485C331C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2994137E-F117-4B4F-B6D7-F0D2669260F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2994137E-F117-4B4F-B6D7-F0D2669260F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2994137E-F117-4B4F-B6D7-F0D2669260F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2994137E-F117-4B4F-B6D7-F0D2669260F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60B1B0B1-663B-482E-BA1C-4A5BCF5A2845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60B1B0B1-663B-482E-BA1C-4A5BCF5A2845}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60B1B0B1-663B-482E-BA1C-4A5BCF5A2845}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60B1B0B1-663B-482E-BA1C-4A5BCF5A2845}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,5 +69,7 @@ Global
 		{650A5A85-5956-491E-9312-5E25A27D1108} = {35C355A2-17BD-40CA-8C79-814FB65E7674}
 		{12663066-EEB1-44C3-A2E1-26920A4707C0} = {7E08A1A0-F37C-40E5-9E45-5BBFCC4B3A33}
 		{8D80C54D-2E37-407B-A755-0F36485C331C} = {35C355A2-17BD-40CA-8C79-814FB65E7674}
+		{2994137E-F117-4B4F-B6D7-F0D2669260F0} = {7E08A1A0-F37C-40E5-9E45-5BBFCC4B3A33}
+		{60B1B0B1-663B-482E-BA1C-4A5BCF5A2845} = {35C355A2-17BD-40CA-8C79-814FB65E7674}
 	EndGlobalSection
 EndGlobal

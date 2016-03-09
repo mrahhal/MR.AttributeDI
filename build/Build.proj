@@ -20,8 +20,10 @@
 	<ItemGroup>
 		<Assemblies Include="MR.AttributeDI.Abstractions" />
 		<Assemblies Include="MR.AttributeDI.ServiceCollection" />
+		<Assemblies Include="MR.AttributeDI.Autofac" />
 		<TestAssemblies Include="MR.AttributeDI.Abstractions.Tests" />
 		<TestAssemblies Include="MR.AttributeDI.ServiceCollection.Tests" />
+		<TestAssemblies Include="MR.AttributeDI.Autofac.Tests" />
 	</ItemGroup>
 	<Import Project="Build.tasks" />
 

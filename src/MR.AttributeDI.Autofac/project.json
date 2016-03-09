@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0-*",
+  "description": "MR.AttributeDI's plugin for Autofac",
+  "authors": [ "Mohammad Rahhal" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+
+  "dependencies": {
+    "Autofac": "4.0.0-rc1-177",
+    "MR.AttributeDI.Abstractions": ""
+  },
+
+  "frameworks": {
+    "net451": { }
+  }
+}

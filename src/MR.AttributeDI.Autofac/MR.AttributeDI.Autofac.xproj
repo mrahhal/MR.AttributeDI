@@ -6,8 +6,8 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>12663066-eeb1-44c3-a2e1-26920a4707c0</ProjectGuid>
-    <RootNamespace>MR.AttributeDI.ServiceCollection</RootNamespace>
+    <ProjectGuid>2994137e-f117-4b4f-b6d7-f0d2669260f0</ProjectGuid>
+    <RootNamespace>MR.AttributeDI.Autofac</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">..\..\artifacts\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">..\..\artifacts\bin\$(MSBuildProjectName)\</OutputPath>
   </PropertyGroup>
