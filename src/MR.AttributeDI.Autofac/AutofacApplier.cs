@@ -3,6 +3,9 @@ using Autofac;
 
 namespace MR.AttributeDI.Autofac
 {
+	/// <summary>
+	/// An applier for Autofac.
+	/// </summary>
 	public class AutofacApplier : IApplier
 	{
 		private ContainerBuilder _builder;

@@ -38,7 +38,7 @@ namespace MR.AttributeDI
 		{
 			Assert.Throws<ArgumentNullException>(() =>
 			{
-				new Collector(null);
+				new Collector(default(Assembly[]));
 			});
 		}
 

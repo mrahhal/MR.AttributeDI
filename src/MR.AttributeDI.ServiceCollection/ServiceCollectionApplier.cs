@@ -3,6 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace MR.AttributeDI.ServiceCollection
 {
+	/// <summary>
+	/// An applier for Microsoft's <see cref="IServiceCollection"/>.
+	/// </summary>
 	public class ServiceCollectionApplier : IApplier
 	{
 		private IServiceCollection _services;

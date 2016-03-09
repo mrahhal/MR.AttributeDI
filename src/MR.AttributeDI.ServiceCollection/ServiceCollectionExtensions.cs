@@ -5,6 +5,11 @@ namespace MR.AttributeDI.ServiceCollection
 {
 	public static class ServiceCollectionExtensions
 	{
+		/// <summary>
+		/// Configures <see cref="IServiceCollection"/> using <see cref="AddToServicesAttribute"/> decorated types.
+		/// </summary>
+		/// <param name="services">The service collection to configure.</param>
+		/// <param name="assemblies">The assemblies to collect the types from.</param>
 		public static void Configure(this IServiceCollection services, params Assembly[] assemblies)
 		{
 			var collector = new Collector(assemblies);
