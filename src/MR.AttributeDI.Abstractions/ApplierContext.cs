@@ -8,7 +8,7 @@ namespace MR.AttributeDI
 		{
 			Service = service;
 			Lifetime = attribute.Lifetime;
-			As = attribute.As;
+			As = attribute.As ?? service;
 		}
 
 		public Type Service { get; set; }
