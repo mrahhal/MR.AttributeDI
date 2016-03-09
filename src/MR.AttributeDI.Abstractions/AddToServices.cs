@@ -35,5 +35,10 @@ namespace MR.AttributeDI
 		/// Gets or sets type to apply as.
 		/// </summary>
 		public Type As { get; set; }
+
+		/// <summary>
+		/// Gets or sets the tag to collect.
+		/// </summary>
+		public string Tag { get; set; }
 	}
 }

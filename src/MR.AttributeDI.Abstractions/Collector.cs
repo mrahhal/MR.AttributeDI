@@ -12,10 +12,11 @@ namespace MR.AttributeDI
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Collector"/> class.
 		/// </summary>
+		/// <param name="tag">The tag to collect.</param>
 		/// <param name="assemblies">The assemblies to collect from.</param>
 		/// <exception cref="ArgumentNullException"><paramref name="assemblies"/> is null.</exception>
 		/// <exception cref="ArgumentException">Assemblies to check should not be empty.</exception>
-		public Collector(params Assembly[] assemblies)
+		public Collector(string tag, params Assembly[] assemblies)
 		{
 			if (assemblies == null)
 				throw new ArgumentNullException(nameof(assemblies));
@@ -23,6 +24,15 @@ namespace MR.AttributeDI
 				throw new ArgumentException("Assemblies to check should not be empty.", nameof(assemblies));
 
 			Assemblies = assemblies;
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Collector"/> class.
+		/// </summary>
+		/// <param name="assemblies">The assemblies to collect from.</param>
+		public Collector(params Assembly[] assemblies)
+			: this(null, assemblies)
+		{
 		}
 
 		/// <summary>
@@ -34,8 +44,9 @@ namespace MR.AttributeDI
 		/// Collects types decorated with <see cref="AddToServicesAttribute"/> and user the <paramref name="applier"/> to apply it.
 		/// </summary>
 		/// <param name="applier">The applier to use.</param>
+		/// <param name="tag">The tag to collect.</param>
 		/// <exception cref="System.ArgumentNullException"><paramref name="applier"/> is null.</exception>
-		public void Collect(IApplier applier)
+		public void Collect(IApplier applier, string tag = null)
 		{
 			if (applier == null)
 				throw new ArgumentNullException(nameof(applier));
@@ -52,6 +63,12 @@ namespace MR.AttributeDI
 				var attributes = implementation.GetTypeInfo().GetCustomAttributes<AddToServicesAttribute>();
 				foreach (var attribute in attributes)
 				{
+					if ((attribute.Tag == null && tag != null) ||
+						(attribute.Tag != null && tag == null) ||
+						(attribute.Tag != null && tag != null && !attribute.Tag.Equals(tag, StringComparison.OrdinalIgnoreCase)))
+					{
+						continue;
+					}
 					var context = new ApplierContext(implementation, attribute);
 					applier.Apply(context);
 				}

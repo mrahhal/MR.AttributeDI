@@ -21,6 +21,11 @@ namespace MR.AttributeDI
 	{
 	}
 
+	[AddToServices(Tag = "foo")]
+	public class Service3
+	{
+	}
+
 	public class FakeApplier : IApplier
 	{
 		public void Apply(ApplierContext context)
@@ -71,7 +76,7 @@ namespace MR.AttributeDI
 			collector.Collect(applier);
 
 			// Assert
-			applier.Contexts.Should().Contain((c) => c.Service == typeof(Service1));
+			applier.Contexts.Should().Contain(c => c.Service == typeof(Service1));
 		}
 
 		[Fact]
@@ -85,9 +90,41 @@ namespace MR.AttributeDI
 			collector.Collect(applier);
 
 			// Assert
-			applier.Contexts.Should().Contain((c) =>
+			applier.Contexts.Should().Contain(c =>
 				c.Service == typeof(Service2) && c.As == typeof(Service2)).And.Contain((c) =>
 				c.Service == typeof(Service2) && c.As == typeof(IService2));
+		}
+
+		[Theory]
+		[InlineData(default(string))]
+		[InlineData("bar")]
+		public void Collect_DoesNotCollectDifferentTags(string tag)
+		{
+			// Arrange
+			var applier = new FakeApplier();
+			var collector = Create();
+
+			// Act
+			collector.Collect(applier, tag);
+
+			// Assert
+			applier.Contexts.Should().NotContain(c => c.Service == typeof(Service3));
+		}
+
+		[Theory]
+		[InlineData("foo")]
+		[InlineData("FoO")]
+		public void Collect_CollectsTags(string tag)
+		{
+			// Arrange
+			var applier = new FakeApplier();
+			var collector = Create();
+
+			// Act
+			collector.Collect(applier, tag);
+
+			// Assert
+			applier.Contexts.Should().Contain(c => c.Service == typeof(Service3));
 		}
 
 		private Collector Create() => new Collector(typeof(CollectorTest).Assembly);
