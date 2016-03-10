@@ -2,9 +2,9 @@
   "version": "1.0.0-*",
   "description": "Abstractions for MR.AttributeDI",
   "authors": [ "Mohammad Rahhal" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
+  "tags": [ "di", "dependencyinjection", "attribute" ],
+  "projectUrl": "https://github.com/mrahhal/MR.AttributeDI",
+  "licenseUrl": "https://github.com/mrahhal/MR.AttributeDI/blob/master/LICENSE.txt",
 
   "frameworks": {
     "net451": { },

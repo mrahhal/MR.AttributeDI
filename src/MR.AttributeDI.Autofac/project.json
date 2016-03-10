@@ -2,9 +2,9 @@
   "version": "1.0.0-*",
   "description": "MR.AttributeDI's plugin for Autofac",
   "authors": [ "Mohammad Rahhal" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
+  "tags": [ "di", "dependencyinjection", "autofac" ],
+  "projectUrl": "https://github.com/mrahhal/MR.AttributeDI",
+  "licenseUrl": "https://github.com/mrahhal/MR.AttributeDI/blob/master/LICENSE.txt",
 
   "dependencies": {
     "Autofac": "4.0.0-rc1-177",

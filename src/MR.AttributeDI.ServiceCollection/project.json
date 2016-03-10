@@ -2,9 +2,9 @@
   "version": "1.0.0-*",
   "description": "MR.AttributeDI's plugin for Microsoft's IServiceCollection",
   "authors": [ "Mohammad Rahhal" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
+  "tags": [ "di", "dependencyinjection" ],
+  "projectUrl": "https://github.com/mrahhal/MR.AttributeDI",
+  "licenseUrl": "https://github.com/mrahhal/MR.AttributeDI/blob/master/LICENSE.txt",
 
   "dependencies": {
     "Microsoft.Extensions.DependencyInjection": "1.0.0-rc1-final",
