@@ -6,6 +6,11 @@
 
 Provides attribute based configuration of dependency injection services.
 
+## Supported containers
+
+- Microsoft's [`IServiceCollection`](https://github.com/aspnet/DependencyInjection)
+- Autofac
+
 ## Example using `IServiceCollection`
 
 ```diff
