@@ -30,7 +30,7 @@ namespace MR.AttributeDI.Autofac
 					break;
 
 				case Lifetime.Scoped:
-					registration.InstancePerRequest();
+					registration.InstancePerLifetimeScope();
 					break;
 
 				case Lifetime.Transient:
