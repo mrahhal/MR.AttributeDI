@@ -19,7 +19,7 @@ Microsoft's [`IServiceCollection`](https://github.com/aspnet/DependencyInjection
 ```diff
 "dependencies": {
   ...
-+  "MR.AttributeDI.ServiceCollection": "1.0.0"
++  "MR.AttributeDI.ServiceCollection": "*"
 },
 ```
 
