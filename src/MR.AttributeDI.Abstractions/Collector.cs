@@ -63,9 +63,10 @@ namespace MR.AttributeDI
 				var attributes = implementation.GetTypeInfo().GetCustomAttributes<AddToServicesAttribute>();
 				foreach (var attribute in attributes)
 				{
-					if ((attribute.Tag == null && tag != null) ||
-						(attribute.Tag != null && tag == null) ||
-						(attribute.Tag != null && tag != null && !attribute.Tag.Equals(tag, StringComparison.OrdinalIgnoreCase)))
+					if ((attribute.InternalTags == null && tag != null) ||
+						(attribute.InternalTags != null && tag == null) ||
+						(attribute.InternalTags != null && tag != null && !attribute.InternalTags.Any(
+							t => t.Equals(tag, StringComparison.OrdinalIgnoreCase))))
 					{
 						continue;
 					}

@@ -21,8 +21,13 @@ namespace MR.AttributeDI
 	{
 	}
 
-	[AddToServices(Tag = "foo")]
+	[AddToServices(Tags = "foo")]
 	public class Service3
+	{
+	}
+
+	[AddToServices(Tags = "foo, bar")]
+	public class Service4
 	{
 	}
 
@@ -93,6 +98,24 @@ namespace MR.AttributeDI
 			applier.Contexts.Should().Contain(c =>
 				c.Service == typeof(Service2) && c.As == typeof(Service2)).And.Contain((c) =>
 				c.Service == typeof(Service2) && c.As == typeof(IService2));
+		}
+
+		[Fact]
+		public void Collect_MultipleTags()
+		{
+			// Arrange
+			var applier1 = new FakeApplier();
+			var applier2 = new FakeApplier();
+			var collector1 = Create();
+			var collector2 = Create();
+
+			// Act
+			collector1.Collect(applier1, "foo");
+			collector2.Collect(applier2, "bar");
+
+			// Assert
+			applier1.Contexts.Should().Contain(c => c.Service == typeof(Service4));
+			applier2.Contexts.Should().Contain(c => c.Service == typeof(Service4));
 		}
 
 		[Theory]
