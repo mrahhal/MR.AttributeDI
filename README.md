@@ -51,7 +51,7 @@ provider.GetService<DefaultMath>():
 ## Using tags
 
 ```cs
-[AddToServices(Lifetime.Transient, Tag = "foo")]
+[AddToServices(Lifetime.Transient, Tags = "foo")]
 public class DefaultMath
 ...
 ```
@@ -63,3 +63,5 @@ services.Configure(typeof(Program).GetTypeInfo().Assembly); // Will not register
 
 services.Configure("foo", typeof(Program).GetTypeInfo().Assembly); // Will register DefaultMath
 ```
+
+Multiple tags can be specified separated by a comma (for example `"default, integration"`).
