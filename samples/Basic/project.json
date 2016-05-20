@@ -2,29 +2,24 @@
   "version": "1.0.0-*",
   "authors": [ "Mohammad Rahhal" ],
 
-  "compilationOptions": {
+  "buildOptions": {
     "emitEntryPoint": true
   },
 
   "dependencies": {
-    "Microsoft.Extensions.DependencyInjection": "1.0.0-rc1-final",
-    "MR.AttributeDI.Abstractions": "",
-    "MR.AttributeDI.ServiceCollection": ""
-  },
-
-  "commands": {
-    "Basic": "Basic"
+    "Microsoft.Extensions.DependencyInjection": "1.0.0-rc2-final",
+    "MR.AttributeDI.Abstractions": "*",
+    "MR.AttributeDI.ServiceCollection": "*"
   },
 
   "frameworks": {
-    "dnx451": { },
-    "dnxcore50": {
+    "net451": { },
+    "netcoreapp1.0": {
       "dependencies": {
-        "Microsoft.CSharp": "4.0.1-beta-23516",
-        "System.Collections": "4.0.11-beta-23516",
-        "System.Console": "4.0.0-beta-23516",
-        "System.Linq": "4.0.1-beta-23516",
-        "System.Threading": "4.0.11-beta-23516"
+        "Microsoft.NETCore.App": {
+          "type": "platform",
+          "version": "1.0.0-rc2-3002702"
+        }
       }
     }
   }

@@ -2,25 +2,22 @@
   "version": "1.0.0-*",
   "description": "MR.AttributeDI's plugin for Microsoft's IServiceCollection",
   "authors": [ "Mohammad Rahhal" ],
-  "tags": [ "di", "dependencyinjection" ],
-  "projectUrl": "https://github.com/mrahhal/MR.AttributeDI",
-  "licenseUrl": "https://github.com/mrahhal/MR.AttributeDI/blob/master/LICENSE.txt",
+
+  "packOptions": {
+    "tags": [ "di", "dependencyinjection" ],
+    "projectUrl": "https://github.com/mrahhal/MR.AttributeDI",
+    "licenseUrl": "https://github.com/mrahhal/MR.AttributeDI/blob/master/LICENSE.txt"
+  },
 
   "dependencies": {
-    "Microsoft.Extensions.DependencyInjection": "1.0.0-rc1-final",
-    "MR.AttributeDI.Abstractions": ""
+    "Microsoft.Extensions.DependencyInjection": "1.0.0-rc2-final",
+    "NETStandard.Library": "1.5.0-rc2-24027",
+    "MR.AttributeDI.Abstractions": "*"
   },
 
   "frameworks": {
-    "net451": { },
-    "dotnet5.4": {
-      "dependencies": {
-        "Microsoft.CSharp": "4.0.1-beta-23516",
-        "System.Collections": "4.0.11-beta-23516",
-        "System.Linq": "4.0.1-beta-23516",
-        "System.Runtime": "4.0.21-beta-23516",
-        "System.Threading": "4.0.11-beta-23516"
-      }
+    "netstandard1.2": {
+      "dependencies": { }
     }
   }
 }

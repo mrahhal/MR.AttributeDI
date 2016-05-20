@@ -2,16 +2,20 @@
   "version": "1.0.0-*",
   "description": "MR.AttributeDI's plugin for Autofac",
   "authors": [ "Mohammad Rahhal" ],
-  "tags": [ "di", "dependencyinjection", "autofac" ],
-  "projectUrl": "https://github.com/mrahhal/MR.AttributeDI",
-  "licenseUrl": "https://github.com/mrahhal/MR.AttributeDI/blob/master/LICENSE.txt",
+
+  "packOptions": {
+    "tags": [ "di", "dependencyinjection", "autofac" ],
+    "projectUrl": "https://github.com/mrahhal/MR.AttributeDI",
+    "licenseUrl": "https://github.com/mrahhal/MR.AttributeDI/blob/master/LICENSE.txt"
+  },
 
   "dependencies": {
-    "Autofac": "4.0.0-rc1-177",
-    "MR.AttributeDI.Abstractions": ""
+    "Autofac": "4.0.0-rc2-240",
+    "NETStandard.Library": "1.5.0-rc2-24027",
+    "MR.AttributeDI.Abstractions": "*"
   },
 
   "frameworks": {
-    "net451": { }
+    "netstandard1.2": { }
   }
 }

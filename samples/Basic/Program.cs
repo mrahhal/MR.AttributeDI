@@ -39,6 +39,5 @@ namespace Basic
 		{
 			Console.WriteLine($"42 + 42 = {math.Add(42, 42)} using {@using}");
 		}
-
 	}
 }
