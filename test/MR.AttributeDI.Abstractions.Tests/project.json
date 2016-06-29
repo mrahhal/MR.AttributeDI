@@ -2,11 +2,11 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "dotnet-test-xunit": "1.0.0-rc2-build10015",
+    "dotnet-test-xunit": "2.2.0-preview2-build1029",
     "FluentAssertions": "4.2.2",
     "Moq": "4.2.1312.1622",
     "MR.AttributeDI.Abstractions": "*",
-    "xunit": "2.1.0"
+    "xunit": "2.2.0-beta2-build3300"
   },
 
   "testRunner": "xunit",
