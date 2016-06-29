@@ -2,7 +2,7 @@
 <Project DefaultTargets="Build;Test;Package;PrintVersion" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<PropertyGroup>
 		<Major>1</Major>
-		<Minor>2</Minor>
+		<Minor>3</Minor>
 		<Patch>0</Patch>
 		<Quality></Quality> <!-- the quality should be 7 characters long max (imposed by nuget) -->
 
@@ -62,8 +62,11 @@
 
 	<Target Name="RestorePackages" DependsOnTargets="Clean">
 		<Exec
-			WorkingDirectory="$(RootDir)"
-			Command="dotnet restore --quiet" />
+			WorkingDirectory="$(RootDir)/src/%(Assemblies.Identity)/"
+			Command="dotnet restore" />
+		<Exec
+			WorkingDirectory="$(RootDir)/test/%(TestAssemblies.Identity)/"
+			Command="dotnet restore" />
 	</Target>
 
 	<Target Name="Clean">
