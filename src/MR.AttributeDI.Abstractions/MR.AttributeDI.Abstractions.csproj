@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="../../build/common.props" />
+
+	<PropertyGroup Label="Build">
+	</PropertyGroup>
+
+	<PropertyGroup Label="Package">
+		<Description>Abstractions for MR.AttributeDI.</Description>
+		<PackageTags>di;dependencyinjection;attribute</PackageTags>
+	</PropertyGroup>
+
+</Project>
