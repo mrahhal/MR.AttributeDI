@@ -3,6 +3,7 @@
 	<Import Project="../../build/common.props" />
 
 	<PropertyGroup Label="Build">
+		<RootNamespace>MR.AttributeDI</RootNamespace>
 	</PropertyGroup>
 
 	<PropertyGroup Label="Package">
