@@ -31,7 +31,7 @@ namespace MR.AttributeDI.Autofac
 			// Arrange
 			var builder = CreateBuilder();
 			var applier = Create(builder);
-			var context = new ApplierContext(typeof(Service1), new AddToServicesAttribute(Lifetime.Transient));
+			var context = new ApplierContext(typeof(Service1), typeof(Service1), Lifetime.Transient);
 
 			// Act
 			applier.Apply(context);
@@ -47,7 +47,7 @@ namespace MR.AttributeDI.Autofac
 			// Arrange
 			var builder = CreateBuilder();
 			var applier = Create(builder);
-			var context = new ApplierContext(typeof(Service1), new AddToServicesAttribute(Lifetime.Transient, typeof(IService1)));
+			var context = new ApplierContext(typeof(IService1), typeof(Service1), Lifetime.Transient);
 
 			// Act
 			applier.Apply(context);

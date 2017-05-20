@@ -21,8 +21,8 @@ namespace MR.AttributeDI.ServiceCollection
 		public void Apply(ApplierContext context)
 		{
 			_services.Add(new ServiceDescriptor(
-				context.As,
 				context.Service,
+				context.Implementation,
 				Convert(context.Lifetime)));
 		}
 

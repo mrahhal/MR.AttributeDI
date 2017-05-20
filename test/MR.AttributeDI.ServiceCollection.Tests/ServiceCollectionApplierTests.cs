@@ -32,7 +32,7 @@ namespace MR.AttributeDI.ServiceCollection
 			// Arrange
 			var services = CreateServices();
 			var applier = Create(services);
-			var context = new ApplierContext(typeof(Service1), new AddToServicesAttribute());
+			var context = new ApplierContext(typeof(Service1), typeof(Service1), Lifetime.Scoped);
 
 			// Act
 			applier.Apply(context);
@@ -48,7 +48,7 @@ namespace MR.AttributeDI.ServiceCollection
 			// Arrange
 			var services = CreateServices();
 			var applier = Create(services);
-			var context = new ApplierContext(typeof(Service1), new AddToServicesAttribute(Lifetime.Transient));
+			var context = new ApplierContext(typeof(Service1), typeof(Service1), Lifetime.Transient);
 
 			// Act
 			applier.Apply(context);
@@ -63,7 +63,7 @@ namespace MR.AttributeDI.ServiceCollection
 			// Arrange
 			var services = CreateServices();
 			var applier = Create(services);
-			var context = new ApplierContext(typeof(Service1), new AddToServicesAttribute(Lifetime.Scoped, typeof(IService1)));
+			var context = new ApplierContext(typeof(IService1), typeof(Service1), Lifetime.Scoped);
 
 			// Act
 			applier.Apply(context);
@@ -80,7 +80,7 @@ namespace MR.AttributeDI.ServiceCollection
 			// Arrange
 			var services = CreateServices();
 			var applier = Create(services);
-			var context = new ApplierContext(typeof(Service1), new AddToServicesAttribute(Lifetime.Scoped, typeof(IService1)));
+			var context = new ApplierContext(typeof(IService1), typeof(Service1), Lifetime.Scoped);
 
 			// Act
 			applier.Apply(context);

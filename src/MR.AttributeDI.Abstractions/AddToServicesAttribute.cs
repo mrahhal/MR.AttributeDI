@@ -61,6 +61,12 @@ namespace MR.AttributeDI
 		public Type As { get; set; }
 
 		/// <summary>
+		/// Gets or sets whether this should be registered as the implemented interface.
+		/// This won't work if the type implements none or multiple interfaces.
+		/// </summary>
+		public bool AsImplementedInterface { get; set; }
+
+		/// <summary>
 		/// Gets or sets the tags separated by a comma.
 		/// </summary>
 		public string Tags

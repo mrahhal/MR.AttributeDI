@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
@@ -9,36 +10,33 @@ namespace MR.AttributeDI
 	/// </summary>
 	public class Collector
 	{
+		private IAddToServicesAttributeListProvider _provider;
+
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Collector"/> class.
 		/// </summary>
-		/// <param name="tag">The tag to collect.</param>
 		/// <param name="assemblies">The assemblies to collect from.</param>
 		/// <exception cref="ArgumentNullException"><paramref name="assemblies"/> is null.</exception>
 		/// <exception cref="ArgumentException">Assemblies to check should not be empty.</exception>
-		public Collector(string tag, params Assembly[] assemblies)
+		public Collector(params Assembly[] assemblies)
 		{
 			if (assemblies == null)
 				throw new ArgumentNullException(nameof(assemblies));
 			if (assemblies.Length == 0)
 				throw new ArgumentException("Assemblies to check should not be empty.", nameof(assemblies));
 
-			Assemblies = assemblies;
+			_provider = new FromAssembliesAddToServicesAttributeListProvider(assemblies);
 		}
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Collector"/> class.
 		/// </summary>
-		/// <param name="assemblies">The assemblies to collect from.</param>
-		public Collector(params Assembly[] assemblies)
-			: this(null, assemblies)
+		/// <param name="provider">The provider to collect attributes from.</param>
+		/// <exception cref="ArgumentNullException"><paramref name="provider"/> is null.</exception>
+		public Collector(IAddToServicesAttributeListProvider provider)
 		{
+			_provider = provider ?? throw new ArgumentNullException(nameof(provider));
 		}
-
-		/// <summary>
-		/// Gets the assemblies to collect from.
-		/// </summary>
-		public Assembly[] Assemblies { get; }
 
 		/// <summary>
 		/// Collects types decorated with <see cref="AddToServicesAttribute"/> and user the <paramref name="applier"/> to apply it.
@@ -51,16 +49,13 @@ namespace MR.AttributeDI
 			if (applier == null)
 				throw new ArgumentNullException(nameof(applier));
 
-			var implementations = Assemblies
-				.SelectMany(a => a.ExportedTypes)
-				.Where(t =>
-					t.GetTypeInfo()
-					 .CustomAttributes
-					 .Any(cd => cd.AttributeType == typeof(AddToServicesAttribute)));
+			var pairs = _provider.GetAttributes();
 
-			foreach (var implementation in implementations)
+			foreach (var pair in pairs)
 			{
-				var attributes = implementation.GetTypeInfo().GetCustomAttributes<AddToServicesAttribute>();
+				var implementation = pair.Implementation;
+				var attributes = pair.Attributes;
+
 				foreach (var attribute in attributes)
 				{
 					if ((attribute.InternalTags == null && tag != null) ||
@@ -70,10 +65,45 @@ namespace MR.AttributeDI
 					{
 						continue;
 					}
-					var context = new ApplierContext(implementation, attribute);
+
+					var service = ValidateService(implementation, attribute);
+					var context = new ApplierContext(service, implementation, attribute.Lifetime);
 					applier.Apply(context);
 				}
 			}
+		}
+
+		private Type ValidateService(Type implementation, AddToServicesAttribute attribute)
+		{
+			if (attribute.As != null)
+			{
+				return attribute.As;
+			}
+
+			if (attribute.AsImplementedInterface)
+			{
+				return ValidateAsImplementedInterface(implementation, attribute);
+			}
+
+			return implementation;
+		}
+
+		private Type ValidateAsImplementedInterface(Type implementation, AddToServicesAttribute attribute)
+		{
+			var interfaces =
+				implementation.GetTypeInfo().ImplementedInterfaces as ICollection<Type> ??
+				implementation.GetTypeInfo().ImplementedInterfaces.ToList();
+
+			if (interfaces.Count == 0)
+			{
+				throw new InvalidOperationException($"Type {implementation.FullName} does not implement interfaces.");
+			}
+			else if (interfaces.Count > 1)
+			{
+				throw new InvalidOperationException($"Type {implementation.FullName} implements multiple interfaces.");
+			}
+
+			return interfaces.First();
 		}
 	}
 }

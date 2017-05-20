@@ -21,8 +21,8 @@ namespace MR.AttributeDI.Autofac
 		public void Apply(ApplierContext context)
 		{
 			var registration = _builder
-				.RegisterType(context.Service)
-				.As(context.As);
+				.RegisterType(context.Implementation)
+				.As(context.Service);
 			switch (context.Lifetime)
 			{
 				case Lifetime.Singleton:

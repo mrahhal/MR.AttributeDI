@@ -28,7 +28,7 @@ namespace MR.AttributeDI.ServiceCollection
 		/// <param name="assemblies">The assemblies to collect the types from.</param>
 		public static void ConfigureFromAttributes(this IServiceCollection services, string tag, params Assembly[] assemblies)
 		{
-			var collector = new Collector(tag, assemblies);
+			var collector = new Collector(assemblies);
 			var applier = new ServiceCollectionApplier(services);
 			collector.Collect(applier, tag);
 		}

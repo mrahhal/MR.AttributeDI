@@ -10,28 +10,26 @@ namespace MR.AttributeDI
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ApplierContext"/> class.
 		/// </summary>
-		/// <param name="service">The service to apply.</param>
-		/// <param name="attribute">The attribute that decorates the service.</param>
-		public ApplierContext(Type service, AddToServicesAttribute attribute)
+		public ApplierContext(Type service, Type implementation, Lifetime lifetime)
 		{
 			Service = service;
-			Lifetime = attribute.Lifetime;
-			As = attribute.As ?? service;
+			Implementation = implementation;
+			Lifetime = lifetime;
 		}
 
 		/// <summary>
-		/// Gets the service to apply.
+		/// Gets the type to apply as.
 		/// </summary>
 		public Type Service { get; }
+
+		/// <summary>
+		/// Gets the type to apply.
+		/// </summary>
+		public Type Implementation { get; }
 
 		/// <summary>
 		/// Gets the lifetime to use.
 		/// </summary>
 		public Lifetime Lifetime { get; }
-
-		/// <summary>
-		/// Gets the type to apply as.
-		/// </summary>
-		public Type As { get; }
 	}
 }
