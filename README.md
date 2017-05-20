@@ -16,13 +16,6 @@ Microsoft's [`IServiceCollection`](https://github.com/aspnet/DependencyInjection
 
 ## Example using `IServiceCollection`
 
-```diff
-"dependencies": {
-  ...
-+  "MR.AttributeDI.ServiceCollection": "*"
-},
-```
-
 ```c#
 [AddToServices(Lifetime.Transient)] // This will register DefaultMath as self
 [AddToServices(Lifetime.Transient, As = typeof(IMath))]
@@ -38,7 +31,7 @@ public class DefaultMath : IMath
 ```cs
 using MR.AttributeDI.ServiceCollection;
 
-services.Configure(typeof(Program).GetTypeInfo().Assembly); // Assemblies to search in
+services.ConfigureFromAttributes(typeof(Program).GetTypeInfo().Assembly); // Assemblies to search in
 ```
 
 And then simply:
@@ -59,9 +52,9 @@ public class DefaultMath
 Here, `DefaultMath` won't be registered unless we specify its tag in configuration:
 
 ```cs
-services.Configure(typeof(Program).GetTypeInfo().Assembly); // Will not register DefaultMath
+services.ConfigureFromAttributes(typeof(Program).GetTypeInfo().Assembly); // Will not register DefaultMath
 
-services.Configure("foo", typeof(Program).GetTypeInfo().Assembly); // Will register DefaultMath
+services.ConfigureFromAttributes("foo", typeof(Program).GetTypeInfo().Assembly); // Will register DefaultMath
 ```
 
 Multiple tags can be specified separated by a comma (for example `"default, integration"`).

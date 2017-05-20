@@ -64,7 +64,7 @@ namespace MR.AttributeDI.Autofac
 			var builder = CreateBuilder();
 
 			// Act
-			builder.Configure(typeof(AutofacApplierTest).Assembly);
+			builder.ConfigureFromAttributes(typeof(AutofacApplierTest).Assembly);
 
 			// Assert
 			var container = builder.Build();

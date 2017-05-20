@@ -28,9 +28,9 @@ namespace Basic
 			var services = new ServiceCollection();
 
 			// Configure the service collection using attributes.
-			// Configure is an extension method from MR.AttributeDI.ServiceCollection.
+			// ConfigureFromAttributes is an extension method from MR.AttributeDI.ServiceCollection.
 			// GetTypeInfo() is necessary to support .Net Core.
-			services.Configure(typeof(Program).GetTypeInfo().Assembly);
+			services.ConfigureFromAttributes(typeof(Program).GetTypeInfo().Assembly);
 
 			return services.BuildServiceProvider();
 		}

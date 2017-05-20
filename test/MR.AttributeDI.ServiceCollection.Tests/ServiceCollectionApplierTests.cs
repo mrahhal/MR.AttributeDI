@@ -98,7 +98,7 @@ namespace MR.AttributeDI.ServiceCollection
 			var services = CreateServices();
 
 			// Act
-			services.Configure(typeof(ServiceCollectionApplierTests).Assembly);
+			services.ConfigureFromAttributes(typeof(ServiceCollectionApplierTests).Assembly);
 
 			// Assert
 			services.Should().NotBeEmpty();
