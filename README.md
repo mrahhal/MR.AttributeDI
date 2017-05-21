@@ -6,6 +6,8 @@
 
 Provides attribute based configuration of dependency injection services.
 
+[CHANGELOG](CHANGELOG.md)
+
 ## Supported containers
 
 ### `MR.AttributeDI.ServiceCollection` [![NuGet version](https://badge.fury.io/nu/MR.AttributeDI.ServiceCollection.svg)](https://www.nuget.org/packages/MR.AttributeDI.ServiceCollection)
