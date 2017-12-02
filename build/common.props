@@ -1,18 +1,18 @@
 <Project>
 
-	<Import Project="version.props" />
+  <Import Project="version.props" />
 
-	<PropertyGroup Label="Build">
-		<TargetFramework>netstandard1.2</TargetFramework>
-		<NoWarn>$(NoWarn);1591;1587</NoWarn>
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-	</PropertyGroup>
+  <PropertyGroup Label="Build">
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <NoWarn>$(NoWarn);1591;1587</NoWarn>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
 
-	<PropertyGroup Label="Package">
-		<Product>MR.AttributeDI</Product>
-		<Authors>Mohammad Rahhal @mrahhal</Authors>
-		<PackageProjectUrl>https://github.com/mrahhal/MR.AttributeDI</PackageProjectUrl>
-		<PackageLicenseUrl>https://github.com/mrahhal/MR.AttributeDI/blob/master/LICENSE.txt</PackageLicenseUrl>
-	</PropertyGroup>
+  <PropertyGroup Label="Package">
+    <Product>MR.AttributeDI</Product>
+    <Authors>Mohammad Rahhal @mrahhal</Authors>
+    <PackageProjectUrl>https://github.com/mrahhal/MR.AttributeDI</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/mrahhal/MR.AttributeDI/blob/master/LICENSE.txt</PackageLicenseUrl>
+  </PropertyGroup>
 
 </Project>
