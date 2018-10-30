@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 _Nothing yet..._
 
+## [2.0.1] - 2018-10-30
+### Changed
+- Make [SourceLink](https://github.com/dotnet/sourcelink) compatible.
+
 ## [2.0.0] - 2017-12-02
 ### Changed
 - Update dependencies.
