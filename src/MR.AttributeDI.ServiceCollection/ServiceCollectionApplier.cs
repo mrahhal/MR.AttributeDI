@@ -20,10 +20,20 @@ namespace MR.AttributeDI.ServiceCollection
 
 		public void Apply(ApplierContext context)
 		{
-			_services.Add(new ServiceDescriptor(
-				context.Service,
-				context.Implementation,
-				Convert(context.Lifetime)));
+			if (context.ForwardTo == null)
+			{
+				_services.Add(new ServiceDescriptor(
+					context.Service,
+					context.Implementation,
+					Convert(context.Lifetime)));
+			}
+			else
+			{
+				_services.Add(new ServiceDescriptor(
+					context.Service,
+					provider => provider.GetService(context.ForwardTo),
+					Convert(context.Lifetime)));
+			}
 		}
 
 		private ServiceLifetime Convert(Lifetime lifetime)

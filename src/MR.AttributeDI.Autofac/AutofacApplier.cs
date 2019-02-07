@@ -1,5 +1,6 @@
 ﻿using System;
 using Autofac;
+using Autofac.Builder;
 
 namespace MR.AttributeDI.Autofac
 {
@@ -8,34 +9,32 @@ namespace MR.AttributeDI.Autofac
 	/// </summary>
 	public class AutofacApplier : IApplier
 	{
-		private ContainerBuilder _builder;
+		private readonly ContainerBuilder _builder;
 
 		public AutofacApplier(ContainerBuilder builder)
 		{
-			if (builder == null)
-				throw new ArgumentNullException(nameof(builder));
-
-			_builder = builder;
+			_builder = builder ?? throw new ArgumentNullException(nameof(builder));
 		}
 
 		public void Apply(ApplierContext context)
 		{
-			var registration = _builder
-				.RegisterType(context.Implementation)
-				.As(context.Service);
-			switch (context.Lifetime)
+			if (context.ForwardTo == null)
 			{
-				case Lifetime.Singleton:
-					registration.SingleInstance();
-					break;
+				var registration = _builder
+					.RegisterType(context.Implementation)
+					.As(context.Service)
+					.ConfigureLifecycle(context.Lifetime, null);
+			}
+			else
+			{
+				var registration = RegistrationBuilder.ForDelegate(context.Service, (c, parameters) =>
+				{
+					return c.Resolve(context.ForwardTo);
+				})
+				.ConfigureLifecycle(context.Lifetime, null)
+				.CreateRegistration();
 
-				case Lifetime.Scoped:
-					registration.InstancePerLifetimeScope();
-					break;
-
-				case Lifetime.Transient:
-					registration.InstancePerDependency();
-					break;
+				_builder.RegisterComponent(registration);
 			}
 		}
 	}

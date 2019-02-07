@@ -10,7 +10,7 @@ namespace MR.AttributeDI
 	/// </summary>
 	public class Collector
 	{
-		private IAddToServicesAttributeListProvider _provider;
+		private readonly IAddToServicesAttributeListProvider _provider;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Collector"/> class.
@@ -43,7 +43,7 @@ namespace MR.AttributeDI
 		/// </summary>
 		/// <param name="applier">The applier to use.</param>
 		/// <param name="tag">The tag to collect.</param>
-		/// <exception cref="System.ArgumentNullException"><paramref name="applier"/> is null.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="applier"/> is null.</exception>
 		public void Collect(IApplier applier, string tag = null)
 		{
 			if (applier == null)
@@ -67,7 +67,7 @@ namespace MR.AttributeDI
 					}
 
 					var service = ValidateService(implementation, attribute);
-					var context = new ApplierContext(service, implementation, attribute.Lifetime);
+					var context = new ApplierContext(service, implementation, attribute.ForwardTo, attribute.Lifetime);
 					applier.Apply(context);
 				}
 			}
@@ -82,13 +82,13 @@ namespace MR.AttributeDI
 
 			if (attribute.AsImplementedInterface)
 			{
-				return ValidateAsImplementedInterface(implementation, attribute);
+				return ValidateAsImplementedInterface(implementation);
 			}
 
 			return implementation;
 		}
 
-		private Type ValidateAsImplementedInterface(Type implementation, AddToServicesAttribute attribute)
+		private Type ValidateAsImplementedInterface(Type implementation)
 		{
 			var interfaces =
 				implementation.GetTypeInfo().ImplementedInterfaces as ICollection<Type> ??

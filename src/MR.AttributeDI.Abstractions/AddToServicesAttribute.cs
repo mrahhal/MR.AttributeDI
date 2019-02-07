@@ -56,7 +56,7 @@ namespace MR.AttributeDI
 		public Lifetime Lifetime { get; set; } = Lifetime.Scoped;
 
 		/// <summary>
-		/// Gets or sets type to apply as.
+		/// Gets or sets the type to apply as.
 		/// </summary>
 		public Type As { get; set; }
 
@@ -65,6 +65,11 @@ namespace MR.AttributeDI
 		/// This won't work if the type implements none or multiple interfaces.
 		/// </summary>
 		public bool AsImplementedInterface { get; set; }
+
+		/// <summary>
+		/// Gets or sets the type to forward to.
+		/// </summary>
+		public Type ForwardTo { get; set; }
 
 		/// <summary>
 		/// Gets or sets the tags separated by a comma.

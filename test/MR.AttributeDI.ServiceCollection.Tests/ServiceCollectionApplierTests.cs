@@ -15,6 +15,14 @@ namespace MR.AttributeDI.ServiceCollection
 	{
 	}
 
+	public class MultipleImplementedInterfaces : IMultipleImplementedInterfaces1, IMultipleImplementedInterfaces2
+	{
+	}
+
+	public interface IMultipleImplementedInterfaces1 { }
+
+	public interface IMultipleImplementedInterfaces2 { }
+
 	public class ServiceCollectionApplierTests
 	{
 		[Fact]
@@ -89,6 +97,27 @@ namespace MR.AttributeDI.ServiceCollection
 			services.Should().Contain(sd =>
 				sd.ServiceType == typeof(IService1) &&
 				sd.ImplementationType == typeof(Service1));
+		}
+
+		[Fact]
+		public void Apply_FowardTo()
+		{
+			// Arrange
+			var services = CreateServices();
+			var applier = Create(services);
+			var context1 = new ApplierContext(typeof(IMultipleImplementedInterfaces1), typeof(MultipleImplementedInterfaces), null, Lifetime.Scoped);
+			var context2 = new ApplierContext(typeof(IMultipleImplementedInterfaces2), typeof(MultipleImplementedInterfaces), typeof(IMultipleImplementedInterfaces1), Lifetime.Scoped);
+
+			// Act
+			applier.Apply(context1);
+			applier.Apply(context2);
+
+			// Assert
+			var serviceProvider = services.BuildServiceProvider();
+			var _1 = serviceProvider.GetService<IMultipleImplementedInterfaces1>();
+			var _2 = serviceProvider.GetService<IMultipleImplementedInterfaces2>();
+
+			_1.Should().BeSameAs(_2);
 		}
 
 		[Fact]

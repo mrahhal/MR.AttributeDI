@@ -14,6 +14,14 @@ namespace MR.AttributeDI.Autofac
 	{
 	}
 
+	public class MultipleImplementedInterfaces : IMultipleImplementedInterfaces1, IMultipleImplementedInterfaces2
+	{
+	}
+
+	public interface IMultipleImplementedInterfaces1 { }
+
+	public interface IMultipleImplementedInterfaces2 { }
+
 	public class AutofacApplierTest
 	{
 		[Fact]
@@ -55,6 +63,27 @@ namespace MR.AttributeDI.Autofac
 			// Assert
 			var container = builder.Build();
 			container.Resolve<IService1>().Should().NotBeNull().And.BeOfType<Service1>();
+		}
+
+		[Fact]
+		public void Apply_FowardTo()
+		{
+			// Arrange
+			var builder = CreateBuilder();
+			var applier = Create(builder);
+			var context1 = new ApplierContext(typeof(IMultipleImplementedInterfaces1), typeof(MultipleImplementedInterfaces), null, Lifetime.Scoped);
+			var context2 = new ApplierContext(typeof(IMultipleImplementedInterfaces2), typeof(MultipleImplementedInterfaces), typeof(IMultipleImplementedInterfaces1), Lifetime.Scoped);
+
+			// Act
+			applier.Apply(context1);
+			applier.Apply(context2);
+
+			// Assert
+			var container = builder.Build();
+			var _1 = container.Resolve<IMultipleImplementedInterfaces1>();
+			var _2 = container.Resolve<IMultipleImplementedInterfaces2>();
+
+			_1.Should().BeSameAs(_2);
 		}
 
 		[Fact]
