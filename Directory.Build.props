@@ -1,0 +1,16 @@
+﻿<Project>
+
+  <Import Project="build\version.props" />
+
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);1591;1587</NoWarn>
+    <Product>MR.AttributeDI</Product>
+    <RepositoryUrl>https://github.com/mrahhal/MR.AttributeDI</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryRoot>$(MSBuildThisFileDirectory)</RepositoryRoot>
+    <Authors>Mohammad Rahhal @mrahhal</Authors>
+    <PackageProjectUrl>https://github.com/mrahhal/MR.AttributeDI</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/mrahhal/MR.AttributeDI/blob/master/LICENSE.txt</PackageLicenseUrl>
+  </PropertyGroup>
+
+</Project>
