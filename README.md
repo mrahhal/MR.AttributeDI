@@ -60,3 +60,16 @@ services.ConfigureFromAttributes("foo", typeof(Program).GetTypeInfo().Assembly);
 ```
 
 Multiple tags can be specified separated by a comma (for example `"default, integration"`).
+
+## Forwarding
+
+You can also forward service registrations for services where you want to share a single instance for multiple interfaces:
+
+
+```cs
+[AddToServices(Lifetime.Singleton, As = typeof(IFoo))]
+[AddToServices(Lifetime.Singleton, As = typeof(IBar), ForwardTo = typeof(IFoo))]
+public class SomeService : IFoo, IBar
+{}
+```
+
