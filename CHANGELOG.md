@@ -9,7 +9,7 @@ _Nothing yet..._
 
 ## [2.1.0] - 2019-02-07
 ### Added
-- Add support for forwarding service registrations. [#3](https://github.com/mrahhal/MR.AttributeDI/issues/2)
+- Add support for forwarding service registrations. [#2](https://github.com/mrahhal/MR.AttributeDI/issues/2)
 
 ## [2.0.1] - 2018-10-30
 ### Changed
