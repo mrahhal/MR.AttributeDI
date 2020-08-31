@@ -8,14 +8,11 @@ namespace MR.AttributeDI.ServiceCollection
 	/// </summary>
 	public class ServiceCollectionApplier : IApplier
 	{
-		private IServiceCollection _services;
+		private readonly IServiceCollection _services;
 
 		public ServiceCollectionApplier(IServiceCollection services)
 		{
-			if (services == null)
-				throw new ArgumentNullException(nameof(services));
-
-			_services = services;
+			_services = services ?? throw new ArgumentNullException(nameof(services));
 		}
 
 		public void Apply(ApplierContext context)
