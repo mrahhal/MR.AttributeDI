@@ -87,12 +87,5 @@ public sealed class AddToServicesAttribute : Attribute
 		}
 	}
 
-	[Obsolete("Use the Tags property instead.")]
-	public string? Tag
-	{
-		get { return Tags; }
-		set { Tags = value; }
-	}
-
 	internal string[]? InternalTags { get; private set; }
 }

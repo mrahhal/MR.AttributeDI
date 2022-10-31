@@ -16,10 +16,6 @@ public static class ServiceCollectionExtensions
 		services.ConfigureFromAttributes(null, assemblies);
 	}
 
-	[Obsolete("Use ConfigureFromAttributes instead.")]
-	public static void Configure(this IServiceCollection services, params Assembly[] assemblies)
-		=> services.ConfigureFromAttributes(assemblies);
-
 	/// <summary>
 	/// Configures <see cref="IServiceCollection"/> using <see cref="AddToServicesAttribute"/> decorated types.
 	/// </summary>
@@ -32,8 +28,4 @@ public static class ServiceCollectionExtensions
 		var applier = new ServiceCollectionApplier(services);
 		collector.Collect(applier, tag);
 	}
-
-	[Obsolete("Use ConfigureFromAttributes instead.")]
-	public static void Configure(this IServiceCollection services, string? tag, params Assembly[] assemblies)
-		=> services.ConfigureFromAttributes(tag, assemblies);
 }

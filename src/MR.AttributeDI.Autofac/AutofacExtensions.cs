@@ -15,10 +15,6 @@ public static class AutofacExtensions
 		builder.ConfigureFromAttributes(null, assemblies);
 	}
 
-	[Obsolete("Use ConfigureFromAttributes instead.")]
-	public static void Configure(this ContainerBuilder builder, params Assembly[] assemblies)
-		=> builder.ConfigureFromAttributes(assemblies);
-
 	/// <summary>
 	/// Configures <see cref="ContainerBuilder"/> using <see cref="AddToServicesAttribute"/> decorated types.
 	/// </summary>
@@ -31,8 +27,4 @@ public static class AutofacExtensions
 		var applier = new AutofacApplier(builder);
 		collector.Collect(applier, tag);
 	}
-
-	[Obsolete("Use ConfigureFromAttributes instead.")]
-	public static void Configure(this ContainerBuilder builder, string tag, params Assembly[] assemblies)
-		=> builder.ConfigureFromAttributes(tag, assemblies);
 }
