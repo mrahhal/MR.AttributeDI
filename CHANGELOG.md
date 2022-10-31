@@ -9,7 +9,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 [**Full diff**](https://github.com/mrahhal/MR.AttributeDI/compare/2.1.0...HEAD)
 
-This version introduces NRT support, and targets .net 6.
+This version comes annotated for NRTs, and retargets to .net 6.
+
+### Added
+
+- Add support for NRTs (nullable reference types)
+
+### Changed
+
+- Change target framework to .net 6
 
 ### Removed
 
