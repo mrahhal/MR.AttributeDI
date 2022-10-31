@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    tags:
+    - v*
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  main:
+    uses: mrahhal/.github/.github/workflows/ci-dotnet-package.yml@main
+    with:
+      dotnet-version: 6.x.x
+    secrets:
+      NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
