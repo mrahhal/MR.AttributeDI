@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace MR.AttributeDI;
+﻿namespace MR.AttributeDI;
 
 public interface IAddToServicesAttributeListProvider
 {

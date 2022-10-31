@@ -1,5 +1,4 @@
-﻿using System;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 using MDI = Microsoft.Extensions.DependencyInjection;

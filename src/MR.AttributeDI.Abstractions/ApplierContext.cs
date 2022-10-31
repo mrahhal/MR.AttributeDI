@@ -1,5 +1,3 @@
-using System;
-
 namespace MR.AttributeDI;
 
 /// <summary>
