@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MR.AttributeDI
+namespace MR.AttributeDI;
+
+public interface IAddToServicesAttributeListProvider
 {
-	public interface IAddToServicesAttributeListProvider
-	{
-		List<(Type Implementation, IEnumerable<AddToServicesAttribute> Attributes)> GetAttributes();
-	}
+	List<(Type Implementation, IEnumerable<AddToServicesAttribute> Attributes)> GetAttributes();
 }

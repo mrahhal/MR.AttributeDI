@@ -1,14 +1,13 @@
 ﻿using MR.AttributeDI;
 
-namespace Basic
+namespace Basic;
+
+[AddToServices(Lifetime.Transient)]
+[AddToServices(Lifetime.Transient, As = typeof(IMath))]
+public class DefaultMath : IMath
 {
-	[AddToServices(Lifetime.Transient)]
-	[AddToServices(Lifetime.Transient, As = typeof(IMath))]
-	public class DefaultMath : IMath
+	public int Add(int x, int y)
 	{
-		public int Add(int x, int y)
-		{
-			return x + y;
-		}
+		return x + y;
 	}
 }

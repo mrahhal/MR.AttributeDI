@@ -1,7 +1,6 @@
-﻿namespace Basic
+﻿namespace Basic;
+
+public interface IMath
 {
-	public interface IMath
-	{
-		int Add(int x, int y);
-	}
+	int Add(int x, int y);
 }

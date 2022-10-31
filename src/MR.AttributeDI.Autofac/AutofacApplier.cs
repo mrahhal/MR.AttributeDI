@@ -2,40 +2,39 @@
 using Autofac;
 using Autofac.Builder;
 
-namespace MR.AttributeDI.Autofac
+namespace MR.AttributeDI.Autofac;
+
+/// <summary>
+/// An applier for Autofac.
+/// </summary>
+public class AutofacApplier : IApplier
 {
-	/// <summary>
-	/// An applier for Autofac.
-	/// </summary>
-	public class AutofacApplier : IApplier
+	private readonly ContainerBuilder _builder;
+
+	public AutofacApplier(ContainerBuilder builder)
 	{
-		private readonly ContainerBuilder _builder;
+		_builder = builder ?? throw new ArgumentNullException(nameof(builder));
+	}
 
-		public AutofacApplier(ContainerBuilder builder)
+	public void Apply(ApplierContext context)
+	{
+		if (context.ForwardTo == null)
 		{
-			_builder = builder ?? throw new ArgumentNullException(nameof(builder));
+			var registration = _builder
+				.RegisterType(context.Implementation)
+				.As(context.Service)
+				.ConfigureLifecycle(context.Lifetime, null);
 		}
-
-		public void Apply(ApplierContext context)
+		else
 		{
-			if (context.ForwardTo == null)
+			var registration = RegistrationBuilder.ForDelegate(context.Service, (c, parameters) =>
 			{
-				var registration = _builder
-					.RegisterType(context.Implementation)
-					.As(context.Service)
-					.ConfigureLifecycle(context.Lifetime, null);
-			}
-			else
-			{
-				var registration = RegistrationBuilder.ForDelegate(context.Service, (c, parameters) =>
-				{
-					return c.Resolve(context.ForwardTo);
-				})
-				.ConfigureLifecycle(context.Lifetime, null)
-				.CreateRegistration();
+				return c.Resolve(context.ForwardTo);
+			})
+			.ConfigureLifecycle(context.Lifetime, null)
+			.CreateRegistration();
 
-				_builder.RegisterComponent(registration);
-			}
+			_builder.RegisterComponent(registration);
 		}
 	}
 }
