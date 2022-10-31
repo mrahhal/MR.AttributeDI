@@ -3,6 +3,7 @@
   <PropertyGroup Label="Package">
     <Description>Abstractions for MR.AttributeDI.</Description>
     <PackageTags>di;dependencyinjection;attribute</PackageTags>
+    <RootNamespace>MR.AttributeDI</RootNamespace>
   </PropertyGroup>
 
 </Project>
