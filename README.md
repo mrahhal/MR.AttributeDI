@@ -1,7 +1,7 @@
 # MR.AttributeDI
 
 [![CI](https://github.com/mrahhal/MR.AttributeDI/actions/workflows/ci.yml/badge.svg)](https://github.com/mrahhal/MR.AttributeDI/actions/workflows/ci.yml)
-[![NuGet version](https://badge.fury.io/nu/MR.AttributeDI.ServiceCollection.svg)](https://www.nuget.org/packages/MR.AttributeDI.ServiceCollection)
+[![NuGet version](https://badge.fury.io/nu/MR.AttributeDI.Abstractions.svg)](https://www.nuget.org/packages/MR.AttributeDI.Abstractions)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.txt)
 
 Provides attribute based configuration of dependency injection services.
@@ -10,23 +10,23 @@ Provides attribute based configuration of dependency injection services.
 
 ## Supported containers
 
-### `MR.AttributeDI.ServiceCollection` [![NuGet version](https://badge.fury.io/nu/MR.AttributeDI.ServiceCollection.svg)](https://www.nuget.org/packages/MR.AttributeDI.ServiceCollection)
+### MR.AttributeDI.ServiceCollection [![NuGet version](https://badge.fury.io/nu/MR.AttributeDI.ServiceCollection.svg)](https://www.nuget.org/packages/MR.AttributeDI.ServiceCollection)
 Microsoft's [`IServiceCollection`](https://github.com/aspnet/DependencyInjection)
 
-### `MR.AttributeDI.Autofac` [![NuGet version](https://badge.fury.io/nu/MR.AttributeDI.Autofac.svg)](https://www.nuget.org/packages/MR.AttributeDI.Autofac)
+### MR.AttributeDI.Autofac [![NuGet version](https://badge.fury.io/nu/MR.AttributeDI.Autofac.svg)](https://www.nuget.org/packages/MR.AttributeDI.Autofac)
 [Autofac](https://github.com/autofac/Autofac)
 
 ## Example using `IServiceCollection`
 
-```c#
+```cs
 [AddToServices(Lifetime.Transient)] // This will register DefaultMath as self
 [AddToServices(Lifetime.Transient, As = typeof(IMath))]
 public class DefaultMath : IMath
 {
-	public int Add(int x, int y)
-	{
-		return x + y;
-	}
+    public int Add(int x, int y)
+    {
+        return x + y;
+    }
 }
 ```
 
@@ -72,4 +72,3 @@ You can also forward service registrations for services where you want to share 
 public class SomeService : IFoo, IBar
 {}
 ```
-
