@@ -16,7 +16,7 @@ public class ApplierContext
 	/// <summary>
 	/// Initializes a new instance of the <see cref="ApplierContext"/> class.
 	/// </summary>
-	public ApplierContext(Type service, Type implementation, Type forwardTo, Lifetime lifetime)
+	public ApplierContext(Type service, Type implementation, Type? forwardTo, Lifetime lifetime)
 	{
 		Service = service;
 		Implementation = implementation;
@@ -37,7 +37,7 @@ public class ApplierContext
 	/// <summary>
 	/// Gets the type to forward to.
 	/// </summary>
-	public Type ForwardTo { get; }
+	public Type? ForwardTo { get; }
 
 	/// <summary>
 	/// Gets the lifetime to use.

@@ -28,22 +28,19 @@ public class ServiceCollectionApplier : IApplier
 		{
 			_services.Add(new ServiceDescriptor(
 				context.Service,
-				provider => provider.GetService(context.ForwardTo),
+				provider => provider.GetRequiredService(context.ForwardTo),
 				Convert(context.Lifetime)));
 		}
 	}
 
-	private ServiceLifetime Convert(Lifetime lifetime)
+	private static ServiceLifetime Convert(Lifetime lifetime)
 	{
-		switch (lifetime)
+		return lifetime switch
 		{
-			case Lifetime.Singleton:
-				return ServiceLifetime.Singleton;
-			case Lifetime.Scoped:
-				return ServiceLifetime.Scoped;
-			case Lifetime.Transient:
-			default:
-				return ServiceLifetime.Transient;
-		}
+			Lifetime.Singleton => ServiceLifetime.Singleton,
+			Lifetime.Scoped => ServiceLifetime.Scoped,
+			Lifetime.Transient => ServiceLifetime.Transient,
+			_ => throw new Exception("Unreachable"),
+		};
 	}
 }

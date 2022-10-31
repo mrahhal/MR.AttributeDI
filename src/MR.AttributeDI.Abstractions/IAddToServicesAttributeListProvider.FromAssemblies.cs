@@ -4,7 +4,7 @@ namespace MR.AttributeDI;
 
 public class FromAssembliesAddToServicesAttributeListProvider : IAddToServicesAttributeListProvider
 {
-	private Assembly[] _assemblies;
+	private readonly Assembly[] _assemblies;
 
 	public FromAssembliesAddToServicesAttributeListProvider(Assembly[] assemblies)
 	{

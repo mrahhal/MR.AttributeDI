@@ -7,7 +7,7 @@ public static class AutoFacRegistrationExtensions
 	public static IRegistrationBuilder<object, TActivatorData, TRegistrationStyle> ConfigureLifecycle<TActivatorData, TRegistrationStyle>(
 		this IRegistrationBuilder<object, TActivatorData, TRegistrationStyle> registrationBuilder,
 		Lifetime lifetime,
-		object lifetimeScopeTagForSingleton)
+		object? lifetimeScopeTagForSingleton)
 	{
 		switch (lifetime)
 		{

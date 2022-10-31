@@ -41,18 +41,15 @@ public class Collector
 	/// <param name="applier">The applier to use.</param>
 	/// <param name="tag">The tag to collect.</param>
 	/// <exception cref="ArgumentNullException"><paramref name="applier"/> is null.</exception>
-	public void Collect(IApplier applier, string tag = null)
+	public void Collect(IApplier applier, string? tag = null)
 	{
 		if (applier == null)
 			throw new ArgumentNullException(nameof(applier));
 
 		var pairs = _provider.GetAttributes();
 
-		foreach (var pair in pairs)
+		foreach (var (implementation, attributes) in pairs)
 		{
-			var implementation = pair.Implementation;
-			var attributes = pair.Attributes;
-
 			foreach (var attribute in attributes)
 			{
 				if ((attribute.InternalTags == null && tag != null) ||
@@ -70,7 +67,7 @@ public class Collector
 		}
 	}
 
-	private Type ValidateService(Type implementation, AddToServicesAttribute attribute)
+	private static Type ValidateService(Type implementation, AddToServicesAttribute attribute)
 	{
 		if (attribute.As != null)
 		{
@@ -85,7 +82,7 @@ public class Collector
 		return implementation;
 	}
 
-	private Type ValidateAsImplementedInterface(Type implementation)
+	private static Type ValidateAsImplementedInterface(Type implementation)
 	{
 		var interfaces =
 			implementation.GetTypeInfo().ImplementedInterfaces as ICollection<Type> ??

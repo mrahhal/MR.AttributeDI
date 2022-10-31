@@ -6,7 +6,7 @@ namespace MR.AttributeDI;
 [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = true)]
 public sealed class AddToServicesAttribute : Attribute
 {
-	private string _tags;
+	private string? _tags;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="AddToServicesAttribute"/> class.
@@ -40,7 +40,7 @@ public sealed class AddToServicesAttribute : Attribute
 	/// <param name="lifetime">The lifetime to use.</param>
 	/// <param name="as">The type to apply as.</param>
 	/// <param name="tags">The tags to use.</param>
-	public AddToServicesAttribute(Lifetime lifetime, Type @as = null, string tags = null)
+	public AddToServicesAttribute(Lifetime lifetime, Type? @as = null, string? tags = null)
 	{
 		Lifetime = lifetime;
 		As = @as;
@@ -55,7 +55,7 @@ public sealed class AddToServicesAttribute : Attribute
 	/// <summary>
 	/// Gets or sets the type to apply as.
 	/// </summary>
-	public Type As { get; set; }
+	public Type? As { get; set; }
 
 	/// <summary>
 	/// Gets or sets whether this should be registered as the implemented interface.
@@ -66,12 +66,12 @@ public sealed class AddToServicesAttribute : Attribute
 	/// <summary>
 	/// Gets or sets the type to forward to.
 	/// </summary>
-	public Type ForwardTo { get; set; }
+	public Type? ForwardTo { get; set; }
 
 	/// <summary>
 	/// Gets or sets the tags separated by a comma.
 	/// </summary>
-	public string Tags
+	public string? Tags
 	{
 		get
 		{
@@ -88,11 +88,11 @@ public sealed class AddToServicesAttribute : Attribute
 	}
 
 	[Obsolete("Use the Tags property instead.")]
-	public string Tag
+	public string? Tag
 	{
 		get { return Tags; }
 		set { Tags = value; }
 	}
 
-	internal string[] InternalTags { get; private set; }
+	internal string[]? InternalTags { get; private set; }
 }

@@ -26,7 +26,7 @@ public static class ServiceCollectionExtensions
 	/// <param name="services">The service collection to configure.</param>
 	/// <param name="tag">The tag to collect.</param>
 	/// <param name="assemblies">The assemblies to collect the types from.</param>
-	public static void ConfigureFromAttributes(this IServiceCollection services, string tag, params Assembly[] assemblies)
+	public static void ConfigureFromAttributes(this IServiceCollection services, string? tag, params Assembly[] assemblies)
 	{
 		var collector = new Collector(assemblies);
 		var applier = new ServiceCollectionApplier(services);
@@ -34,6 +34,6 @@ public static class ServiceCollectionExtensions
 	}
 
 	[Obsolete("Use ConfigureFromAttributes instead.")]
-	public static void Configure(this IServiceCollection services, string tag, params Assembly[] assemblies)
+	public static void Configure(this IServiceCollection services, string? tag, params Assembly[] assemblies)
 		=> services.ConfigureFromAttributes(tag, assemblies);
 }
