@@ -7,8 +7,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased: 3.0.0
 
-[**Full diff**](https://github.com/mrahhal/MR.AttributeDI/compare/2.1.0...HEAD)
-
 This version comes annotated for NRTs, and retargets to .net 6.
 
 ### Added
@@ -22,6 +20,8 @@ This version comes annotated for NRTs, and retargets to .net 6.
 ### Removed
 
 - Remove previously marked obsolete items
+
+[**Full diff**](https://github.com/mrahhal/MR.AttributeDI/compare/2.1.0...HEAD)
 
 ## 2.1.0 - 2019-02-07
 
@@ -37,15 +37,13 @@ This version comes annotated for NRTs, and retargets to .net 6.
 
 ## 2.0.0 - 2017-12-02
 
-[**Full diff**](https://github.com/mrahhal/MR.AttributeDI/compare/1.4.0...2.0.0)
-
 ### Changed
 
 - Update dependencies
 
-## 1.4.0 - 2017-05-20
+[**Full diff**](https://github.com/mrahhal/MR.AttributeDI/compare/1.4.0...2.0.0)
 
-[**Full diff**](https://github.com/mrahhal/MR.AttributeDI/compare/1.3.0...1.4.0)
+## 1.4.0 - 2017-05-20
 
 ### Added
 
@@ -54,3 +52,5 @@ This version comes annotated for NRTs, and retargets to .net 6.
 ### Changed
 
 - Rename extension methods from `Configure` to `ConfigureFromAttributes` ([#4](https://github.com/mrahhal/MR.AttributeDI/issues/4))
+
+[**Full diff**](https://github.com/mrahhal/MR.AttributeDI/compare/1.3.0...1.4.0)
